@@ -141,8 +141,11 @@ BITSPIXEL
 bla
 BLACKFRAME
 BLENDFUNCTION
+blittable
 Blockquotes
 blt
+bluelightreduction
+bluelightreductionstate
 BLURBEHIND
 BLURREGION
 bmi
@@ -221,6 +224,7 @@ clientside
 CLIPBOARDUPDATE
 CLIPCHILDREN
 CLIPSIBLINGS
+CLITo
 closesocket
 clp
 CLSCTX
@@ -249,6 +253,7 @@ colorformat
 colorhistory
 colorhistorylimit
 COLORKEY
+colorref
 comctl
 comdlg
 comexp
@@ -728,9 +733,9 @@ HWNDPARENT
 HWNDPREV
 hyjiacan
 IAI
-icf
 ICONERROR
 ICONLOCATION
+icf
 IDCANCEL
 IDD
 idk
@@ -1073,6 +1078,7 @@ MVVMTK
 MWBEx
 MYICON
 NAMECHANGE
+Notavailable
 namespaceanddescendants
 nao
 NCACTIVATE
@@ -1111,6 +1117,7 @@ NEWPLUSSHELLEXTENSIONWIN
 newrow
 nicksnettravels
 NIF
+nightlight
 NLog
 NLSTEXT
 NMAKE
@@ -1481,6 +1488,7 @@ rgh
 rgn
 rgs
 rguid
+rhk
 RIDEV
 RIGHTSCROLLBAR
 riid
@@ -1586,6 +1594,7 @@ SHGDNF
 SHGFI
 SHIL
 shinfo
+shk
 shlwapi
 shobjidl
 SHORTCUTATLEAST
@@ -1796,6 +1805,7 @@ tlbimp
 tlc
 tmain
 TNP
+toolgood
 Toolhelp
 toolwindow
 TOPDOWNDIB
@@ -1844,6 +1854,8 @@ uitests
 UITo
 ULONGLONG
 ums
+UMax
+UMin
 uncompilable
 UNCPRIORITY
 UNDNAME
@@ -1855,8 +1867,10 @@ Uniquifies
 unitconverter
 unittests
 UNLEN
+Uninitializes
 UNORM
 unremapped
+Unsubscribes
 unvirtualized
 unwide
 unzoom
