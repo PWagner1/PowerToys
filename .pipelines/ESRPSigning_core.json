@@ -117,6 +117,7 @@
             "WinUI3Apps\\PowerToys.FileLocksmithUI.dll",
             "WinUI3Apps\\PowerToys.FileLocksmithContextMenu.dll",
             "FileLocksmithContextMenuPackage.msix",
+            "FileLocksmithCLI.exe",
 
             "WinUI3Apps\\Peek.Common.dll",
             "WinUI3Apps\\Peek.FilePreviewer.dll",
@@ -131,6 +132,8 @@
 
             "PowerToys.ImageResizer.exe",
             "PowerToys.ImageResizer.dll",
+            "WinUI3Apps\\PowerToys.ImageResizerCLI.exe",
+            "WinUI3Apps\\PowerToys.ImageResizerCLI.dll",
             "PowerToys.ImageResizerExt.dll",
             "PowerToys.ImageResizerContextMenu.dll",
             "ImageResizerContextMenuPackage.msix",
