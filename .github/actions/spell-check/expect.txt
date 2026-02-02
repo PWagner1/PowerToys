@@ -44,6 +44,7 @@ ALLCHILDREN
 ALLINPUT
 Allman
 Allmodule
+ALLNOISE
 ALLOWUNDO
 ALLVIEW
 ALPHATYPE
@@ -597,6 +598,7 @@ frm
 FROMTOUCH
 fsanitize
 fsmgmt
+ftps
 fuzzingtesting
 fxf
 FZE
@@ -634,6 +636,7 @@ GMEM
 GNumber
 googleai
 googlegemini
+Gotchas
 gpedit
 gpo
 GPOCA
@@ -891,12 +894,13 @@ Lclean
 Ldone
 Ldr
 LEFTALIGN
+leftclick
 LEFTSCROLLBAR
 LEFTTEXT
-leftclick
 LError
 LEVELID
 LExit
+LFU
 lhwnd
 LIBFUZZER
 LIBID
@@ -1019,9 +1023,12 @@ MENUITEMINFO
 MENUITEMINFOW
 MERGECOPY
 MERGEPAINT
+Metacharacter
 metadatamatters
 Metadatas
+Metacharacter
 metafile
+Metacharacter
 mfc
 Mgmt
 Microwaved
@@ -1068,7 +1075,7 @@ mouseutils
 MOVESIZEEND
 MOVESIZESTART
 MRM
-MRT
+Mrt
 mru
 MSAL
 msc
@@ -1329,7 +1336,7 @@ phwnd
 pici
 pidl
 PIDLIST
-PII
+pii
 pinfo
 pinvoke
 pipename
@@ -1486,7 +1493,9 @@ regfile
 REGISTERCLASSFAILED
 REGISTRYHEADER
 REGISTRYPREVIEWEXT
+registryroot
 regkey
+regroot
 regsvr
 REINSTALLMODE
 releaseblog
@@ -1715,6 +1724,7 @@ srw
 srwlock
 sse
 ssf
+Ssn
 sszzz
 STACKFRAME
 stackoverflow
@@ -1824,6 +1834,7 @@ TEXTBOXNEWLINE
 textextractor
 TEXTINCLUDE
 tfopen
+tgamma
 tgz
 THEMECHANGED
 themeresources
