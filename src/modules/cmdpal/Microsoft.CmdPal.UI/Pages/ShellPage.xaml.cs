@@ -229,25 +229,37 @@ public sealed partial class ShellPage : Microsoft.UI.Xaml.Controls.Page,
 
     private async Task HandlePinToDockDialogOnUiThread(ShowPinToDockDialogMessage message)
     {
-        var (result, content) = await PinToDockDialogContent.ShowAsync(
-            this.XamlRoot,
-            message.Title,
-            message.Subtitle,
-            message.Icon,
-            message.DockSide,
-            message.AvailableMonitors);
+        // Ask each dock window to display a teaching tip identifying its monitor,
+        // so the user can correlate the dialog's monitor list with the physical docks.
+        WeakReferenceMessenger.Default.Send(new ShowDockMonitorLabelsMessage(true));
 
-        if (result == ContentDialogResult.Primary)
+        try
         {
-            var pinMessage = new PinToDockMessage(
-                message.ProviderId,
-                message.CommandId,
-                Pin: true,
-                Side: content.SelectedSide,
-                ShowTitles: content.ShowTitles,
-                ShowSubtitles: content.ShowSubtitles,
-                MonitorDeviceId: content.SelectedMonitorDeviceId);
-            WeakReferenceMessenger.Default.Send(pinMessage);
+            var (result, content) = await PinToDockDialogContent.ShowAsync(
+                this.XamlRoot,
+                message.Title,
+                message.Subtitle,
+                message.Icon,
+                message.DockSide,
+                message.AvailableMonitors);
+
+            if (result == ContentDialogResult.Primary)
+            {
+                var pinMessage = new PinToDockMessage(
+                    message.ProviderId,
+                    message.CommandId,
+                    Pin: true,
+                    Side: content.SelectedSide,
+                    ShowTitles: content.ShowTitles,
+                    ShowSubtitles: content.ShowSubtitles,
+                    MonitorDeviceId: content.SelectedMonitorDeviceId);
+                WeakReferenceMessenger.Default.Send(pinMessage);
+            }
+        }
+        finally
+        {
+            // Hide the teaching tips once the dialog is saved or dismissed.
+            WeakReferenceMessenger.Default.Send(new ShowDockMonitorLabelsMessage(false));
         }
     }
 
@@ -448,8 +460,9 @@ public sealed partial class ShellPage : Microsoft.UI.Xaml.Controls.Page,
                     if (isPage)
                     {
                         // If we're here, then the bound command was a page
-                        // of some kind. Let's pop the stack, show the window, and navigate to it.
-                        GoHome(false);
+                        // of some kind. Reset to root (clearing any transient dock state),
+                        // show the window, and navigate to it.
+                        ViewModel.ResetToHome();
 
                         WeakReferenceMessenger.Default.Send<ShowWindowMessage>(new(message.Hwnd));
                     }

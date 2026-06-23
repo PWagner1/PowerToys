@@ -17,8 +17,8 @@ LIGHTTURQUOISE
 NCol
 OLIVEGREEN
 PALEBLUE
-PArgb
-Pbgra
+pargb
+pbgra
 SRGBTo
 WHITEONBLACK
 
@@ -51,6 +51,7 @@ resw
 resx
 srt
 Stereolithography
+taskmgr
 terabyte
 UYVY
 xbf
@@ -336,6 +337,10 @@ MRUCMPPROC
 MRUINFO
 REGSTR
 
+#Xaml
+NVI
+Storyboards
+
 # Misc Win32 APIs and PInvokes
 DEFAULTTONEAREST
 INVOKEIDLIST
@@ -360,7 +365,10 @@ FILESYSONLY
 URLIS
 WAITTIMEOUT
 DEFAULTTONEAREST
-
+DWRITE
+LWIN
+VCENTER
+VREDRAW
 
 # COM/WinRT interface prefixes and type fragments
 BAlt
@@ -424,3 +432,6 @@ SHELLEXPERIENCEHOST
 SHELLHOST
 STARTMENUEXPERIENCEHOST
 WIDGETBOARD
+
+# URIs
+actioncenter

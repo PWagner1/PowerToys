@@ -18,6 +18,7 @@ using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Windows.Foundation;
 using Windows.Win32;
 using Windows.Win32.Foundation;
@@ -37,6 +38,7 @@ namespace Microsoft.CmdPal.UI.Dock;
 public sealed partial class DockWindow : WindowEx,
     IRecipient<BringToTopMessage>,
     IRecipient<RequestShowPaletteAtMessage>,
+    IRecipient<ShowDockMonitorLabelsMessage>,
     IRecipient<QuitMessage>,
     IDisposable
 {
@@ -129,6 +131,9 @@ public sealed partial class DockWindow : WindowEx,
             overlappedPresenter.IsResizable = false;
         }
 
+        _hwnd = GetWindowHandle(this);
+        _dock.OwnerHwnd = (nint)_hwnd;
+
         // immediately when we're created: make sure to remove our window frame
         // and shadow. We don't _always_ get an Activated when we're first
         // created.
@@ -137,10 +142,8 @@ public sealed partial class DockWindow : WindowEx,
 
         WeakReferenceMessenger.Default.Register<BringToTopMessage>(this);
         WeakReferenceMessenger.Default.Register<RequestShowPaletteAtMessage>(this);
+        WeakReferenceMessenger.Default.Register<ShowDockMonitorLabelsMessage>(this);
         WeakReferenceMessenger.Default.Register<QuitMessage>(this);
-
-        _hwnd = GetWindowHandle(this);
-        _dock.OwnerHwnd = (nint)_hwnd;
 
         // Subclass the window to intercept messages
         //
@@ -777,32 +780,99 @@ public sealed partial class DockWindow : WindowEx,
         DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () => RequestShowPaletteOnUiThread(message.PosDips));
     }
 
+    void IRecipient<ShowDockMonitorLabelsMessage>.Receive(ShowDockMonitorLabelsMessage message)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            if (_isDisposed)
+            {
+                return;
+            }
+
+            if (message.Show)
+            {
+                ShowMonitorLabel();
+            }
+            else
+            {
+                HideMonitorLabel();
+            }
+        });
+    }
+
+    private void ShowMonitorLabel()
+    {
+        var name = _targetMonitor?.DisplayName
+            ?? _monitorService.GetPrimaryMonitor()?.DisplayName
+            ?? string.Empty;
+
+        MonitorLabelTeachingTip.Title = name;
+        MonitorLabelTeachingTip.Target = Root;
+
+        // Open the tip on the side opposite the dock alignment so it stays
+        // within the bounds of the monitor the dock is on (e.g. a top dock
+        // shows its tip below the bar).
+        MonitorLabelTeachingTip.PreferredPlacement = EffectiveSide switch
+        {
+            DockSide.Top => TeachingTipPlacementMode.Bottom,
+            DockSide.Bottom => TeachingTipPlacementMode.Top,
+            DockSide.Left => TeachingTipPlacementMode.Right,
+            DockSide.Right => TeachingTipPlacementMode.Left,
+            _ => TeachingTipPlacementMode.Bottom,
+        };
+
+        MonitorLabelTeachingTip.IsOpen = true;
+    }
+
+    private void HideMonitorLabel()
+    {
+        MonitorLabelTeachingTip.IsOpen = false;
+    }
+
     private void RequestShowPaletteOnUiThread(Point posDips)
     {
-        // pos is relative to our root. We need to convert to screen coords.
+        // pos is relative to our root. We need to convert to absolute
+        // virtual-screen coords.
+        //
+        // TransformToVisual(null) yields a point in the XamlRoot's coordinate
+        // space (i.e. the window's client area in DIPs), NOT in screen space.
+        // To get true screen coordinates we must offset by the window's
+        // screen-space origin (GetWindowRect, which is in pixels). Without
+        // this offset, X (for Top/Bottom docks) or Y (for Left/Right docks)
+        // stays in window-local pixels and the palette ends up on the primary
+        // monitor when the dock lives on a secondary monitor.
         var rootPosDips = Root.TransformToVisual(null).TransformPoint(new Point(0, 0));
         var screenPosDips = new Point(rootPosDips.X + posDips.X, rootPosDips.Y + posDips.Y);
 
         var dpi = PInvoke.GetDpiForWindow(_hwnd);
         var scaleFactor = dpi / 96.0;
-        var screenPosPixels = new Point(screenPosDips.X * scaleFactor, screenPosDips.Y * scaleFactor);
+        PInvoke.GetWindowRect(_hwnd, out var ourRect);
+
+        var screenPosPixels = new Point(
+            ourRect.left + (screenPosDips.X * scaleFactor),
+            ourRect.top + (screenPosDips.Y * scaleFactor));
 
         // Use monitor-specific bounds when available
+        // Note: we compute the quadrant in monitor-local coordinates, but
+        // keep screenPosPixels in absolute virtual-screen coordinates. Mixing
+        // the two below (when only one axis is overridden from ourRect, which
+        // is in virtual-screen coords) produced an off-screen final position
+        // on secondary monitors.
         int screenWidth, screenHeight;
+        double localX, localY;
         if (_targetMonitor is not null)
         {
             screenWidth = _targetMonitor.Bounds.Width;
             screenHeight = _targetMonitor.Bounds.Height;
-
-            // Adjust to monitor-local coordinates for quadrant calculation
-            screenPosPixels = new Point(
-                screenPosPixels.X - _targetMonitor.Bounds.Left,
-                screenPosPixels.Y - _targetMonitor.Bounds.Top);
+            localX = screenPosPixels.X - _targetMonitor.Bounds.Left;
+            localY = screenPosPixels.Y - _targetMonitor.Bounds.Top;
         }
         else
         {
             screenWidth = PInvoke.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CXSCREEN);
             screenHeight = PInvoke.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CYSCREEN);
+            localX = screenPosPixels.X;
+            localY = screenPosPixels.Y;
         }
 
         // Now we're going to find the best position for the palette.
@@ -820,8 +890,8 @@ public sealed partial class DockWindow : WindowEx,
         // On the bottom:
         //   - anchor to the bottom, left if we're on the left half of the screen
         //   - anchor to the bottom, right if we're on the right half of the screen
-        var onTopHalf = screenPosPixels.Y < screenHeight / 2;
-        var onLeftHalf = screenPosPixels.X < screenWidth / 2;
+        var onTopHalf = localY < screenHeight / 2;
+        var onLeftHalf = localX < screenWidth / 2;
         var onRightHalf = !onLeftHalf;
         var onBottomHalf = !onTopHalf;
 
@@ -837,7 +907,6 @@ public sealed partial class DockWindow : WindowEx,
         // we also need to slide the anchor point a bit away from the dock
         var paddingDips = 8;
         var paddingPixels = paddingDips * scaleFactor;
-        PInvoke.GetWindowRect(_hwnd, out var ourRect);
 
         // Depending on the side we're on, we need to offset differently
         switch (EffectiveSide)
@@ -983,6 +1052,8 @@ internal static class ShowDesktop
 internal sealed record BringToTopMessage(bool BringToFront);
 
 internal sealed record RequestShowPaletteAtMessage(Point PosDips, IntPtr OwnerHwnd);
+
+internal sealed record ShowDockMonitorLabelsMessage(bool Show);
 
 internal sealed record ShowPaletteAtMessage(Point PosPixels, AnchorPoint Anchor);
 

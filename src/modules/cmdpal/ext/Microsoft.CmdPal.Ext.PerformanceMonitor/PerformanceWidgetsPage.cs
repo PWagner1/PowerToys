@@ -107,6 +107,7 @@ internal sealed partial class PerformanceWidgetsPage : OnLoadStaticListPage, IDi
             _cpuPage.Updated += (s, e) =>
             {
                 _cpuItem.Title = _cpuPage.GetItemTitle(isBandPage);
+                RaiseItemsChanged();
             };
         }
 
@@ -122,6 +123,7 @@ internal sealed partial class PerformanceWidgetsPage : OnLoadStaticListPage, IDi
             _memoryPage.Updated += (s, e) =>
             {
                 _memoryItem.Title = _memoryPage.GetItemTitle(isBandPage);
+                RaiseItemsChanged();
             };
         }
 
@@ -141,6 +143,7 @@ internal sealed partial class PerformanceWidgetsPage : OnLoadStaticListPage, IDi
                 _networkDownSpeed = _networkPage.GetDownSpeed();
                 _networkDownItem?.Title = $"{_networkDownSpeed}";
                 _networkUpItem?.Title = $"{_networkUpSpeed}";
+                RaiseItemsChanged();
             };
         }
 
@@ -156,6 +159,7 @@ internal sealed partial class PerformanceWidgetsPage : OnLoadStaticListPage, IDi
             _gpuPage.Updated += (s, e) =>
             {
                 _gpuItem.Title = _gpuPage.GetItemTitle(isBandPage);
+                RaiseItemsChanged();
             };
         }
 
@@ -176,6 +180,7 @@ internal sealed partial class PerformanceWidgetsPage : OnLoadStaticListPage, IDi
                 {
                     _batteryItem.Title = _batteryPage.GetItemTitle(isBandPage);
                     _batteryItem.Icon = _batteryPage.CurrentIcon;
+                    RaiseItemsChanged();
                 };
             }
         }
@@ -257,6 +262,7 @@ internal sealed partial class PerformanceWidgetsPage : OnLoadStaticListPage, IDi
             {
                 Title = $"{_networkUpSpeed}",
                 Subtitle = Resources.GetResource("Network_Send_Subtitle"),
+                Icon = Icons.NetworkUpIcon,
                 MoreCommands = _networkPage!.Commands,
             };
 
@@ -264,12 +270,13 @@ internal sealed partial class PerformanceWidgetsPage : OnLoadStaticListPage, IDi
             {
                 Title = $"{_networkDownSpeed}",
                 Subtitle = Resources.GetResource("Network_Receive_Subtitle"),
+                Icon = Icons.NetworkDownIcon,
                 MoreCommands = _networkPage!.Commands,
             };
 
             return _batteryItem is not null
-                ? new[] { _cpuItem!, _memoryItem!, _networkDownItem!, _networkUpItem!, _gpuItem!, _batteryItem! }
-                : new[] { _cpuItem!, _memoryItem!, _networkDownItem!, _networkUpItem!, _gpuItem! };
+                ? new[] { _cpuItem!, _memoryItem!, _networkUpItem!, _networkDownItem!, _gpuItem!, _batteryItem! }
+                : new[] { _cpuItem!, _memoryItem!, _networkUpItem!, _networkDownItem!, _gpuItem! };
         }
     }
 

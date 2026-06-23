@@ -24,7 +24,8 @@ advancedpaste
 advapi
 advfirewall
 AFeature
-affordances
+affordance
+afterfx
 AFX
 agentskills
 AGGREGATABLE
@@ -62,6 +63,7 @@ APPEXECLINK
 appext
 apphost
 APPLICATIONFRAMEHOST
+Applocal
 appmanifest
 APPMODEL
 APPNAME
@@ -80,6 +82,7 @@ ARPPRODUCTICON
 ARRAYSIZE
 ARROWKEYS
 arrowshape
+artboard
 ARTIFACTSTAGINGDIRECTORY
 asf
 Ashcraft
@@ -110,14 +113,12 @@ azman
 azureaiinference
 azureinference
 azureopenai
-Backlight
 backticks
 Badflags
 Badmode
 Badparam
 bbwe
 BCIE
-bck
 BESTEFFORT
 bezelled
 bhid
@@ -164,6 +165,7 @@ bugreport
 bugreportfile
 BUILDARCH
 BUILDNUMBER
+buildsystems
 buildtransitive
 builttoroam
 BUNDLEINFO
@@ -201,6 +203,7 @@ checkmarks
 CHILDACTIVATE
 CHILDWINDOW
 CHOOSEFONT
+chu
 CIBUILD
 cidl
 CIELCh
@@ -223,6 +226,7 @@ CLIPSIBLINGS
 closesocket
 clp
 CLSCTX
+CLSIDs
 clsids
 Clusion
 cmder
@@ -333,6 +337,7 @@ dacl
 DAffine
 DAFFINETRANSFORM
 datareader
+Datasheet
 datatracker
 Dayof
 dbcc
@@ -369,6 +374,7 @@ DEFPUSHBUTTON
 deinitialization
 DELA
 DELD
+deld
 DELETEDKEYIMAGE
 DELETESCANS
 DEMOTYPE
@@ -393,6 +399,7 @@ DEVMODE
 DEVMODEW
 DEVNODES
 devpal
+devpackages
 DEVTYP
 dfx
 DIALOGEX
@@ -408,7 +415,6 @@ DISPLAYFLAGS
 DISPLAYFREQUENCY
 displayname
 DISPLAYORIENTATION
-DISPLAYPORT
 divyan
 DLGFRAME
 dlgmodalframe
@@ -436,9 +442,9 @@ drawingcolor
 dreamsofameaningfullife
 drivedetectionwarning
 DROPFILES
+DSPDLOG
 DSTINVERT
 DString
-DSVG
 dto
 DUMMYUNIONNAME
 dumpbin
@@ -458,13 +464,12 @@ DWMNCRENDERINGCHANGED
 Dwmp
 DWMSENDICONICLIVEPREVIEWBITMAP
 DWMSENDICONICTHUMBNAIL
-DWMWA
-DWMWCP
+dwmwa
+dwmwcp
 DWMWINDOWATTRIBUTE
 DWMWINDOWMAXIMIZEDCHANGE
 DWORDLONG
 dworigin
-DWRITE
 dxgi
 Dxva
 eab
@@ -502,7 +507,6 @@ ETDT
 etl
 etw
 eula
-eurochange
 eventvwr
 evt
 EWXFORCE
@@ -543,6 +547,7 @@ FFFF
 fffffffzzz
 FFh
 Figma
+figma
 FILEEXPLORER
 fileexploreraddons
 fileexplorerpreview
@@ -636,6 +641,7 @@ GRC
 grctlext
 GRGX
 Gridcustomlayout
+gridlines
 GSM
 gtm
 guiddata
@@ -670,6 +676,7 @@ HDEVNOTIFY
 hdr
 HDROP
 hdwwiz
+Headered
 Helpline
 helptext
 hgdiobj
@@ -722,6 +729,7 @@ hotkeys
 hotlight
 hotspot
 HPAINTBUFFER
+HPS
 HRAWINPUT
 HREDRAW
 hres
@@ -785,6 +793,7 @@ imgflip
 inapp
 inbox
 INCONTACT
+indesign
 Indo
 inetcpl
 Infobar
@@ -795,6 +804,7 @@ INITDIALOG
 INITGUID
 initialfile
 INITTOLOGFONTSTRUCT
+inkscape
 INLINEPREFIX
 inlines
 Inno
@@ -838,6 +848,7 @@ issecret
 ISSEPARATOR
 issuecomment
 istep
+Italicise
 ith
 IUI
 IUWP
@@ -845,17 +856,18 @@ IWIC
 jeli
 jfif
 jgeosdfsdsgmkedfgdfgdfgbkmhcgcflmi
+JIDEA
 jjw
 jobject
 JOBOBJECT
 jpe
-JPN
 jpnime
 jrsoftware
 Jsons
 jsonval
 jxr
 Kantai
+KBSC
 keybd
 KEYBDDATA
 KEYBDINPUT
@@ -873,6 +885,7 @@ keynum
 keyremaps
 keyring
 keyvault
+kfull
 KILLFOCUS
 killrunner
 kmph
@@ -976,12 +989,11 @@ lstrcmpi
 lstrcpyn
 lstrlen
 LTEXT
+LTM
 LTRREADING
 luid
 lusrmgr
-LVDS
 LWA
-LWIN
 LZero
 MAGTRANSFORM
 makeappx
@@ -1031,6 +1043,7 @@ Mgmt
 Microwaved
 middleclickaction
 midl
+midtones
 mii
 MIIM
 mikeclayton
@@ -1043,8 +1056,6 @@ MINIMIZESTART
 MINMAXINFO
 minwindef
 Mip
-Miracast
-MIRACAST
 mkdn
 mlcfg
 mmc
@@ -1075,6 +1086,7 @@ MOVESIZEEND
 MOVESIZESTART
 MRM
 mru
+msaccess
 MSAL
 msc
 mscorlib
@@ -1083,8 +1095,6 @@ msdata
 msdia
 MSDL
 MSGFLT
-MSHCTX
-MSHLFLAGS
 msiexec
 MSIFASTINSTALL
 MSIHANDLE
@@ -1094,13 +1104,16 @@ msixbundle
 MSIXCA
 MSLLHOOKSTRUCT
 Mso
+mspub
 msrc
 msstore
 mstsc
 msvcp
 mswhql
+MT
 MTND
 multimonitor
+Multiplayer
 MULTIPLEUSE
 multizone
 muxc
@@ -1143,7 +1156,6 @@ netcpl
 netframework
 netsetup
 netsh
-newcolor
 NEWDIALOGSTYLE
 NEWFILE
 NEWFILEHEADER
@@ -1189,7 +1201,6 @@ nonclient
 NONCLIENTMETRICSW
 NONELEVATED
 nonspace
-nonstd
 NOOWNERZORDER
 NOPARENTNOTIFY
 NOPREFIX
@@ -1204,6 +1215,7 @@ NORMALDISPLAY
 NORMALUSER
 NOSEARCH
 NOSENDCHANGING
+NOSIZE
 nosize
 notdefault
 NOTHOUSANDS
@@ -1244,7 +1256,6 @@ OFN
 ofs
 OICI
 OICIIO
-oldcolor
 olditem
 oldpath
 oldtheme
@@ -1311,6 +1322,7 @@ pchast
 PCIDLIST
 PCTSTR
 PCWSTR
+pdbs
 PDBs
 PDEVMODE
 PDFs
@@ -1339,6 +1351,7 @@ phbm
 phbmp
 phicon
 Photoshop
+photoshop
 phwnd
 pici
 pidl
@@ -1347,6 +1360,7 @@ pii
 pinfo
 pinvoke
 pipename
+Pitjantjatjara
 PKBDLLHOOKSTRUCT
 pkgfamily
 PKI
@@ -1366,14 +1380,16 @@ POINTERID
 POINTERUPDATE
 Pokedex
 Pomodoro
-Popups
 popups
 POPUPWINDOW
+portfile
 POSITIONITEM
+Postbot
 POWERBROADCAST
 powerdisplay
 POWERDISPLAYMODULEINTERFACE
 powerocr
+powerpnt
 POWERRENAMECONTEXTMENU
 powerrenameinput
 POWERRENAMETEST
@@ -1400,7 +1416,6 @@ Prefixer
 Premul
 prependpath
 prepopulate
-Prereq
 prevhost
 previewer
 PREVIEWHANDLERFRAMEINFO
@@ -1429,6 +1444,7 @@ projectname
 PROPERTYKEY
 PROPVARIANT
 prot
+Prt
 PRTL
 prvpane
 psapi
@@ -1474,6 +1490,7 @@ QUERYOPEN
 QUEUESYNC
 quickaccent
 quicklinks
+quickmask
 QUNS
 RAII
 randi
@@ -1487,6 +1504,7 @@ RAWPATH
 rbhid
 Rbuttondown
 rclsid
+RCW
 RCZOOMIT
 rdp
 RDW
@@ -1494,7 +1512,6 @@ READMODE
 READOBJECTS
 recents
 RECTDESTINATION
-rectp
 RECTSOURCE
 recursesubdirs
 recyclebin
@@ -1582,14 +1599,15 @@ SAMESHORTCUTPREVIOUSLYMAPPED
 samsung
 sancov
 SAVEFAILED
-scanled
 schedtasks
 SCID
+SCL
 Scode
 SCREENFONTS
 screenruler
 screensaver
 screenshots
+Scrollback
 scrollviewer
 sddl
 SDKDDK
@@ -1759,6 +1777,7 @@ STDAPI
 stdc
 stdcpp
 stdcpplatest
+stdext
 STDMETHODCALLTYPE
 STDMETHODIMP
 steamapps
@@ -1796,7 +1815,6 @@ svchost
 SVGIn
 SVGIO
 svgz
-SVIDEO
 SVSI
 SWFO
 swp
@@ -1881,6 +1899,7 @@ TNP
 Toggleable
 tontrager
 Toolhelp
+toolsets
 toolwindow
 TOPDOWNDIB
 TOUCHEVENTF
@@ -1930,6 +1949,7 @@ ums
 uncompilable
 UNCPRIORITY
 UNDNAME
+ungroup
 UNICODETEXT
 unins
 uninsdeletekey
@@ -1942,6 +1962,8 @@ UNLEN
 UNORM
 unparsable
 unremapped
+Unsend
+Unsubscribes
 untriaged
 unvirtualized
 unwide
@@ -1971,11 +1993,11 @@ valuegenerator
 VARTYPE
 vbcscompiler
 vcamp
-VCENTER
 vcgtq
 VCINSTALLDIR
 vcp
 Vcpkg
+vcpkg
 vcpname
 VCRT
 vcruntime
@@ -1998,6 +2020,7 @@ VIRTKEY
 VIRTUALDESK
 VISEGRADRELAY
 visiblecolorformats
+visio
 visualeffects
 vkey
 vmovl
@@ -2007,7 +2030,6 @@ vorrq
 VOS
 vpaddlq
 vqsubq
-VREDRAW
 vreinterpretq
 VSC
 VSCBD
@@ -2056,6 +2078,7 @@ winapi
 winappsdk
 windir
 WINDOWCREATED
+WINDOWDESTROYED
 windowedge
 WINDOWINFO
 WINDOWNAME
@@ -2082,13 +2105,16 @@ winlogon
 winmd
 winml
 WINNT
+winproj
 winres
 winrt
 winsdk
 winsta
 WINTHRESHOLD
 WINVER
+winword
 winxamlmanager
+wireframes
 withinrafael
 Withscript
 wixproj
@@ -2156,9 +2182,11 @@ XUP
 XVIRTUALSCREEN
 XXL
 xxxxxx
+Yankunytjatjara
 ycombinator
 yinle
 yinyue
+yoko
 YVIRTUALSCREEN
 zamora
 Zenbook

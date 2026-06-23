@@ -11,6 +11,7 @@ using ManagedCommon;
 using Microsoft.PowerToys.Settings.UI.Library;
 using PowerDisplay.Common.Models;
 using PowerDisplay.Helpers;
+using PowerDisplay.Models;
 using Monitor = PowerDisplay.Common.Models.Monitor;
 
 namespace PowerDisplay.ViewModels;
@@ -108,6 +109,7 @@ public partial class MainViewModel
 
         try
         {
+            CancelPendingLinkedBrightnessCommit();
             IsScanning = true;
 
             var settings = _settingsUtils.GetSettingsOrDefault<PowerDisplaySettings>(PowerDisplaySettings.ModuleName);
@@ -133,6 +135,8 @@ public partial class MainViewModel
 
     private void UpdateMonitorList(IReadOnlyList<Monitor> monitors, bool isInitialLoad)
     {
+        CancelPendingLinkedBrightnessCommit();
+
         // Dispose old ViewModels to unsubscribe PropertyChanged handlers
         foreach (var vm in Monitors)
         {
@@ -160,9 +164,19 @@ public partial class MainViewModel
 
         OnPropertyChanged(nameof(HasMonitors));
         OnPropertyChanged(nameof(ShowNoMonitorsMessage));
+        OnPropertyChanged(nameof(ShowLinkLevelsToggle));
+        RecomputeLinkedBrightnessAvailability();
 
         // Save monitor information to settings
         SaveMonitorsToSettings();
+
+        // First successful discovery after process start is the natural place to clean up
+        // any legacy "{Source}_{EdidId}_{N}" Ids still lingering in the side files that
+        // SaveMonitorsToSettings doesn't touch (profiles.json + monitor_state.json).
+        if (isInitialLoad)
+        {
+            MigrateLegacyMonitorIdsInSideFiles();
+        }
 
         // Note: RestoreMonitorSettingsAsync is now called from InitializeAsync/CompleteInitializationAsync
         // to ensure scanning state is maintained until restore completes
@@ -175,5 +189,6 @@ public partial class MainViewModel
         => new HashSet<string>(
             settings.Properties.Monitors
                 .Where(m => m.IsHidden)
-                .Select(m => m.Id));
+                .Select(m => m.Id),
+            MonitorIdComparer.Instance);
 }

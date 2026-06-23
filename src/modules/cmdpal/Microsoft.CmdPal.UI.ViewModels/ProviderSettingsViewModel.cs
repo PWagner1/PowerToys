@@ -49,6 +49,14 @@ public partial class ProviderSettingsViewModel : ObservableObject
 
     public string DisplayName => _provider.DisplayName;
 
+    /// <summary>
+    /// Stable, non-localized identifier from the underlying provider (e.g.
+    /// "com.microsoft.cmdpal.builtin.calculator"). Exposed for UI tests
+    /// to target the per-provider <see cref="ProviderSettingsViewModel"/>
+    /// row via <c>AutomationProperties.AutomationId</c>.
+    /// </summary>
+    public string Id => _provider.Id;
+
     public string ExtensionName => _provider.Extension?.ExtensionDisplayName ?? Resources.builtin_extension_name;
 
     public string ExtensionSubtext
@@ -112,7 +120,7 @@ public partial class ProviderSettingsViewModel : ObservableObject
                     ProviderSettings = s.ProviderSettings.SetItem(_provider.ProviderId, newSettings),
                 });
                 _providerSettings = newSettings;
-                WeakReferenceMessenger.Default.Send<ReloadCommandsMessage>(new());
+                WeakReferenceMessenger.Default.Send<ProviderEnabledStateChangedMessage>(new(_provider.ProviderId, value));
                 OnPropertyChanged(nameof(IsEnabled));
                 OnPropertyChanged(nameof(ExtensionSubtext));
                 OnPropertyChanged(nameof(Icon));
