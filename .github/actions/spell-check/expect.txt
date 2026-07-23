@@ -119,6 +119,7 @@ Badmode
 Badparam
 bbwe
 BCIE
+Belarusian
 BESTEFFORT
 bezelled
 bhid
@@ -135,6 +136,7 @@ BITMAPINFO
 BITMAPINFOHEADER
 BITSPERPEL
 BITSPIXEL
+Blackmagic
 bla
 BLENDFUNCTION
 blittable
@@ -184,6 +186,7 @@ CAPTURECHANGED
 CARETBLINKING
 carlos
 Carlseibert
+caseinsensitive
 caub
 CBN
 cch
@@ -432,6 +435,7 @@ downsampling
 downscale
 DPICHANGED
 DPIs
+dpm
 DPMS
 DPSAPI
 DQTAT
@@ -539,6 +543,7 @@ EXTRINSICPROPERTIES
 eyetracker
 FANCYZONESDRAWLAYOUTTEST
 FANCYZONESEDITOR
+Fairlight
 FARPROC
 fdw
 fdx
@@ -675,6 +680,7 @@ hcursor
 hcwhite
 hdc
 HDEVNOTIFY
+hdmi
 hdr
 HDROP
 hdwwiz
@@ -836,6 +842,7 @@ INTRESOURCE
 INVALIDARG
 invalidoperatioexception
 invokecommand
+iOS
 ipcmanager
 ipreviewhandlervisualssetfont
 IPTC
@@ -1232,6 +1239,8 @@ NOTSRCCOPY
 NOTSRCERASE
 Notupdated
 notwindows
+NOTXORPEN
+Nouveaut
 nowarn
 NOZORDER
 NPH
@@ -1307,6 +1316,7 @@ PARENTRELATIVEFORADDRESSBAR
 PARENTRELATIVEFORUI
 PARENTRELATIVEPARSING
 parray
+parseable
 PARTIALCONFIRMATIONDIALOGTITLE
 PATCOPY
 PATHMUSTEXIST
@@ -1544,6 +1554,7 @@ Removelnk
 renamable
 RENAMEONCOLLISION
 RENDERFULLCONTENT
+renumbers
 reparented
 reparenting
 reportfileaccesses
@@ -1557,6 +1568,7 @@ RESIZETOFIT
 resmimetype
 RESOURCEID
 RESTORETOMAXIMIZED
+resx
 RETURNONLYFSDIRS
 Revalidates
 RGBQUAD
@@ -1953,6 +1965,7 @@ ums
 uncompilable
 UNCPRIORITY
 UNDNAME
+unescaped
 ungroup
 UNICODETEXT
 unins
@@ -2079,6 +2092,8 @@ wifi
 wikimedia
 wikipedia
 winapi
+winapp
+winappcli
 winappsdk
 windir
 WINDOWCREATED
@@ -2178,6 +2193,7 @@ xclip
 xcopy
 xdf
 xfd
+xhair
 xmp
 Xoshiro
 xsi
